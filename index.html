@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kassMedical+ | Logiciel de gestion hospitalière</title>
+<meta name="description" content="kassMedical+ : logiciel complet de gestion hospitalière et clinique. Dossier patient, consultations CIM-10, laboratoire, hospitalisation, caisse multi-devises (FC/$) et mode 100% hors-ligne.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Bibliothèque d'icônes SVG -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></symbol>
+    <symbol id="i-pill" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20L14 9V3M7 15h10"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol>
+    <symbol id="i-phone-m" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-grad" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16v-4M12 16V8M17 16v-7"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.7.6V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0-.6-2.7H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 2.7-.6V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 2.7.6l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0 .6 2.7H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.7 13.8-.7.7"/></symbol>
+  </defs>
+</svg>
+
+<!-- Barre supérieure -->
+<div class="topbar">
+  <div class="container topbar-in">
+    <div class="topbar-left">
+      <span><svg class="i"><use href="#i-tel"/></svg> +243 852 177 034</span>
+      <span><svg class="i"><use href="#i-mail"/></svg> contact@kassmedical.com</span>
+      <span class="topbar-badge"><svg class="i"><use href="#i-wifi-off"/></svg> Fonctionne 100% Hors-Ligne</span>
+    </div>
+    <div class="topbar-right">
+      <span><svg class="i"><use href="#i-pin"/></svg> Clinique Tshiamala · Limete Bvd 13e Rue · Kinshasa</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header / Navigation -->
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#accueil" class="logo" aria-label="kassMedical+ accueil">
+      <img src="images/logo-complet.png" alt="kassMedical+ - Gestion Hospitalière" class="logo-full" height="46">
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#logiciel">Démonstration</a>
+      <a href="#modules">Espaces métiers</a>
+      <a href="#hors-ligne">Mode Hors-Ligne</a>
+      <a href="#avantages">Avantages</a>
+      <a href="#tarifs">Offres</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary btn-sm">Demander une démo</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section id="accueil" class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="dot"></span> Système d'Information Hospitalier Robuste</span>
+      <h1>Le logiciel hospitalier dédié à vos établissements de santé, <span class="hl">connecté ou non</span>.</h1>
+      <p class="lead">kassMedical+ prend en charge tout le parcours de vos patients : accueil, consultations CIM-10, laboratoire, hospitalisation et caisse multi-devises (FC / $). Vos données restent chez vous, sans jamais dépendre d'Internet.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-primary">Planifier une démonstration <svg class="i"><use href="#i-arrow"/></svg></a>
+        <a href="#logiciel" class="btn btn-ghost"><svg class="i"><use href="#i-play"/></svg> Voir les écrans réels</a>
+      </div>
+      <div class="hero-proof">
+        <div class="avatars"><span>KT</span><span>DR</span><span>LB</span><span>+</span></div>
+        <div>
+          <b>Adopté par des structures de référence</b>
+          <small>Cliniques, hôpitaux et centres de santé en RD Congo et en Afrique</small>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img">
+        <img src="images/hero.jpg" alt="Équipe médicale en milieu hospitalier" fetchpriority="high">
+      </div>
+      <div class="float-card fc1">
+        <span class="fc-ico green"><svg class="i"><use href="#i-check"/></svg></span>
+        <div><b>File d'attente fluide</b><small>Admission & orientation en 2 min</small></div>
+      </div>
+      <div class="float-card fc2">
+        <span class="fc-ico"><svg class="i"><use href="#i-wifi-off"/></svg></span>
+        <div><b>100% Opérationnel Hors-Ligne</b><small>Sync Cloud dès le retour réseau</small></div>
+      </div>
+      <div class="float-card fc3">
+        <span class="fc-ico blue"><svg class="i"><use href="#i-coins"/></svg></span>
+        <div><b>Caisse Multi-Devises</b><small>Gestion Francs Congolais (FC) & $</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU CONFIANCE -->
+<section class="trustbar">
+  <div class="container">
+    <p>Une solution éprouvée par les professionnels de santé au quotidien</p>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>CLINIQUE TSHIAMALA</span>
+        <span class="sep">•</span>
+        <span>CLINIQUE DE POINTE-À-PITRE</span>
+        <span class="sep">•</span>
+        <span>UROMEDS</span>
+        <span class="sep">•</span>
+        <span>CLINIC DENTAIRES CALIDENT</span>
+        <span class="sep">•</span>
+        <span>KIGOMA CENTRE</span>
+        <span class="sep">•</span>
+        <span>CENTRE DE SANTÉ BIKISA NGAYI</span>
+        <span class="sep">•</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>CLINIQUE TSHIAMALA</span>
+        <span class="sep">•</span>
+        <span>CLINIQUE DE POINTE-À-PITRE</span>
+        <span class="sep">•</span>
+        <span>UROMEDS</span>
+        <span class="sep">•</span>
+        <span>CLINIC DENTAIRES CALIDENT</span>
+        <span class="sep">•</span>
+        <span>KIGOMA CENTRE</span>
+        <span class="sep">•</span>
+        <span>CENTRE DE SANTÉ BIKISA NGAYI</span>
+        <span class="sep">•</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FONCTIONNALITÉS ESSENTIELLES -->
+<section id="fonctionnalites" class="section">
+  <div class="container">
+    <div class="head">
+      <span class="kicker">Fonctionnalités Clés</span>
+      <h2>Une couverture médicale et administrative complète</h2>
+      <p>Chaque module communique en temps réel avec les autres services pour éliminer les doubles saisies et accélérer la prise en charge.</p>
+    </div>
+    <div class="features">
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-file"/></svg></span>
+        <h3>Dossier Patient Informatisé</h3>
+        <p>Antécédents médicaux, constantes vitales, allergies, ordonnances et historique des visites centralisés dans une fiche patient sécurisée.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-cal"/></svg></span>
+        <h3>File d'Attente & Rendez-vous</h3>
+        <p>Gestion intelligente de la file d'attente du jour, orientation instantanée vers les médecins de garde et suivi des consultations en cours.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-activity"/></svg></span>
+        <h3>Consultations & CIM-10</h3>
+        <p>Examen clinique assisté, codification internationale des maladies CIM-10, prescription médicamenteuse et comptes rendus d'actes médicaux.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-flask"/></svg></span>
+        <h3>Laboratoire d'Analyses</h3>
+        <p>Transmission directe des demandes d'analyses depuis le médecin, saisie technique des valeurs et validation médicale des résultats.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-bed"/></svg></span>
+        <h3>Hospitalisation & Carte des Lits</h3>
+        <p>Visualisation graphique des chambres et des lits occupés, admissions programmées, transferts internes et formalités de sortie.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-card"/></svg></span>
+        <h3>Caisse & Multi-Devises</h3>
+        <p>Encaissements au choix en Francs Congolais (FC/CDF) et Dollars ($ USD), prise en charge des conventions d'assurances et clôture journalière infalsifiable.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-pill"/></svg></span>
+        <h3>Pharmacie & Gestion de Stock</h3>
+        <p>Gestion précise des entrées/sorties de médicaments, alertes automatiques sur les stocks à commander et traçabilité des délivrances.</p>
+      </article>
+
+      <article class="feature">
+        <span class="f-ico"><svg class="i"><use href="#i-shield"/></svg></span>
+        <h3>Journal d'Audit Inaltérable</h3>
+        <p>Traçabilité stricte : « Qui a fait quoi, et quand ». Sécurité maximale contre la fraude, les modifications non autorisées et les pertes financières.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- APERÇU RÉEL DU LOGICIEL (SHOWCASE INTERACTIF) -->
+<section id="logiciel" class="section showcase">
+  <div class="container">
+    <div class="head light">
+      <span class="kicker">Démonstration en Images</span>
+      <h2>Découvrez l'interface réelle de kassMedical+</h2>
+      <p>Clair, ergonomique, rapide. Conçu pour être pris en main en quelques minutes par l'ensemble de votre personnel soignant et administratif.</p>
+    </div>
+
+    <!-- Sélecteur d'écrans -->
+    <div class="screen-tabs" role="tablist">
+      <button class="s-tab active" data-screen="screen-dir">
+        <svg class="i"><use href="#i-trend"/></svg> 1. Direction & Caisse
+      </button>
+      <button class="s-tab" data-screen="screen-med">
+        <svg class="i"><use href="#i-activity"/></svg> 2. Espace Soins & Médecins (CIM-10)
+      </button>
+      <button class="s-tab" data-screen="screen-param">
+        <svg class="i"><use href="#i-gear"/></svg> 3. Paramètres & Mode Hors-Ligne
+      </button>
+    </div>
+
+    <!-- Fenêtre d'application logicielle réaliste -->
+    <div class="software-window reveal">
+      <div class="win-header">
+        <div class="win-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="win-title">
+          <svg class="i" style="width:14px;height:14px"><use href="#i-activity"/></svg>
+          <span id="winTitleText">kassMedical+ — Tableau de bord Direction (Clinique Tshiamala)</span>
+        </div>
+        <div class="win-badge">
+          <span class="badge-dot"></span> Version v148
+        </div>
+      </div>
+
+      <div class="win-viewport">
+        <!-- Écran 1: Direction & Caisse -->
+        <div class="screen-view active" id="screen-dir">
+          <img src="images/ecran-direction.png" alt="kassMedical+ - Tableau de bord Direction et Caisse" loading="lazy">
+          <div class="screen-caption">
+            <div class="cap-col">
+              <b>Vue synthétique du jour</b>
+              <p>Nombre de consultations, patients reçus, encaissements en Francs Congolais (FC) et Dollars ($), taux d'occupation des lits et alertes de réassort pharmacie.</p>
+            </div>
+            <div class="cap-col">
+              <b>Accès par profil</b>
+              <p>Accès direct à la Facturation & Caisse, Statistiques consolidées, Journal d'Audit inaltérable et Paramètres d'établissement.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Écran 2: Médecin & Soins -->
+        <div class="screen-view" id="screen-med">
+          <img src="images/ecran-medecin.png" alt="kassMedical+ - Espace Soins et Consultation Médecin" loading="lazy">
+          <div class="screen-caption">
+            <div class="cap-col">
+              <b>Parcours clinique complet</b>
+              <p>Accès immédiat aux fiches patients, à la file d'attente du jour, aux antécédents médicaux et aux allergies documentées.</p>
+            </div>
+            <div class="cap-col">
+              <b>Prescriptions & Diagnostic CIM-10</b>
+              <p>Examen clinique assisté, codification officielle internationale CIM-10, prescriptions d'ordonnances et demandes au laboratoire d'analyses.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Écran 3: Paramètres & Hors-Ligne -->
+        <div class="screen-view" id="screen-param">
+          <img src="images/ecran-parametres.png" alt="kassMedical+ - Paramètres de la clinique et Synchronisation en ligne" loading="lazy">
+          <div class="screen-caption">
+            <div class="cap-col">
+              <b>Copie en ligne & Zéro interruption</b>
+              <p>« Vos données restent ici : la clinique continue de fonctionner sans Internet. » Dès que la connexion revient, les modifications partent vers le serveur en toute sécurité.</p>
+            </div>
+            <div class="cap-col">
+              <b>Multi-Devises & Importation Facile</b>
+              <p>Paramétrage des devises (Franc Congolais FC et Dollars $ USD), tarifs des actes, organismes conventionnés et import de fichiers Excel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicateurs clés -->
+    <div class="stats">
+      <div>
+        <b data-count="100" data-suffix=" %">0</b>
+        <p>Autonome sans connexion Internet</p>
+      </div>
+      <div>
+        <b data-count="2" data-suffix=" devises">0</b>
+        <p>Caisse en FC (CDF) et Dollars ($ USD)</p>
+      </div>
+      <div>
+        <b data-count="0" data-suffix=" double saisie">0</b>
+        <p>Liaison directe Consultation / Labo / Caisse</p>
+      </div>
+      <div>
+        <b data-count="100" data-suffix=" %">0</b>
+        <p>Traçabilité des actes (Journal d'audit)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPACES MÉTIERS (ONGLETS) -->
+<section id="modules" class="section">
+  <div class="container">
+    <div class="head">
+      <span class="kicker">Espaces Métiers</span>
+      <h2>Un environnement sur-mesure pour chaque intervenant</h2>
+      <p>Chaque collaborateur ne voit que ce qui est utile à sa mission, avec des interfaces épurées et sans distraction.</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="t1"><svg class="i"><use href="#i-activity"/></svg> Médecins & Soignants</button>
+      <button class="tab" data-tab="t2"><svg class="i"><use href="#i-users"/></svg> Accueil, Caisse & Réception</button>
+      <button class="tab" data-tab="t3"><svg class="i"><use href="#i-trend"/></svg> Direction & Gestion</button>
+    </div>
+
+    <div class="panel active" id="t1">
+      <div class="panel-img">
+        <img src="images/medecin.jpg" alt="Médecin consultant un dossier patient sur tablette" loading="lazy">
+      </div>
+      <div class="panel-txt">
+        <span class="kicker">Espace Soins</span>
+        <h3>Le médecin concentré sur son patient</h3>
+        <p>Accédez en un coup d'œil à l'historique complet du patient, notez vos observations et prescrivez en toute sécurité.</p>
+        <ul class="checklist">
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>File d'attente en temps réel</b> : sachez exactement qui attend en salle d'attente</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Diagnostic CIM-10</b> : codification médicale standardisée intégrée</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Liaison Laboratoire</b> : prescrivez les analyses et recevez les résultats validés</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Carte des Lits</b> : visualisez instantanément les lits libres pour hospitaliser</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" id="t2">
+      <div class="panel-img">
+        <img src="images/administration.jpg" alt="Accueil et admission des patients" loading="lazy">
+      </div>
+      <div class="panel-txt">
+        <span class="kicker">Accueil & Caisse</span>
+        <h3>Un accueil chaleureux et une caisse rigoureuse</h3>
+        <p>Enregistrez les nouveaux patients, orientez-les vers les bons praticiens et encaissez les prestations sans file interminable.</p>
+        <ul class="checklist">
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Recherche patient instantanée</b> par nom, prénom ou identifiant</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Encaissement bi-monétaire</b> : Francs Congolais (CDF/FC) et Dollars ($ USD)</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Organismes conventionnés</b> : tiers payant et entreprises partenaires</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Reçus imprimables</b> et clôture de caisse quotidienne vérifiée</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" id="t3">
+      <div class="panel-img">
+        <img src="images/direction.jpg" alt="Direction analysant les indicateurs de l'hôpital" loading="lazy">
+      </div>
+      <div class="panel-txt">
+        <span class="kicker">Direction Générale</span>
+        <h3>Contrôlez et développez votre établissement</h3>
+        <p>Gardez la maîtrise totale sur l'activité clinique, les flux financiers et la sécurité des opérations.</p>
+        <ul class="checklist">
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Tableau de bord exécutif</b> : consultations, encaissements et taux d'occupation</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Journal d'Audit strict</b> : historique inviolable de chaque action opérée</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Gestion des tarifs & services</b> : modifiables ou importables via Excel</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span><b>Comptes du personnel</b> : droits d'accès cloisonnés par rôle et responsabilité</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS HORS-LIGNE & ARCHITECTURE (KILLER FEATURE) -->
+<section id="hors-ligne" class="section alt offline-section">
+  <div class="container">
+    <div class="zig">
+      <div class="zig-img reveal">
+        <img src="images/ecran-parametres.png" alt="Écran de synchronisation hors-ligne de kassMedical+" loading="lazy" style="border: 2px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);">
+      </div>
+      <div class="zig-txt">
+        <span class="kicker">Architecture Hybride Hors-Ligne</span>
+        <h2 class="left">Vos données restent chez vous. Jamais bloqué par Internet.</h2>
+        <p>Dans beaucoup d'établissements de santé, les coupures de réseau électrique ou Internet paralysent les services. Avec kassMedical+, vos données sont hébergées localement sur vos ordinateurs : <b>la clinique continue de fonctionner normalement sans Internet</b>.</p>
+        <p>Dès qu'une connexion est détectée, une copie sécurisée est envoyée en arrière-plan vers le serveur cloud, garantissant vos sauvegardes sans ralentir vos soignants.</p>
+        <div class="mini-stats">
+          <div><b>100 %</b><small>Continuité de service même hors-ligne</small></div>
+          <div><b>Auto</b><small>Synchronisation transparente dès le retour réseau</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZOOM PHARMACIE & LABORATOIRE -->
+<section class="section">
+  <div class="container">
+    <div class="zig rev">
+      <div class="zig-img reveal">
+        <img src="images/pharmacie.jpg" alt="Gestion des stocks en pharmacie hospitalière" loading="lazy">
+      </div>
+      <div class="zig-txt">
+        <span class="kicker">Pharmacie Hospitalière</span>
+        <h2 class="left">Zéro rupture de stock sur les médicaments vitaux</h2>
+        <p>Grâce aux alertes automatiques <i>« Médicaments à commander »</i> directement visibles sur le tableau de bord, vous anticipez les réapprovisionnements avant que la rupture ne survienne.</p>
+        <div class="mini-stats">
+          <div><b>Temps réel</b><small>Décompte automatique des stocks à chaque ordonnance</small></div>
+          <div><b>Alertes</b><small>Notification immédiate des seuils critiques</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zig" style="margin-top: 90px;">
+      <div class="zig-img reveal">
+        <img src="images/laboratoire.jpg" alt="Laboratoire d'analyses médicales connecté" loading="lazy">
+      </div>
+      <div class="zig-txt">
+        <span class="kicker">Laboratoire Connecté</span>
+        <h2 class="left">Des analyses transmises sans perte de temps</h2>
+        <p>Le médecin prescrit l'examen depuis son écran de consultation. Le laborantin reçoit l'ordre, saisit les résultats mesurés et les valide. Le médecin traitant peut immédiatement adapter son traitement.</p>
+        <div class="mini-stats">
+          <div><b>0 papier</b><small>Circuit d'analyses 100% informatisé</small></div>
+          <div><b>Validation</b><small>Sécurité médicale avec signature du laborantin</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVANTAGES CONCURRENTIELS -->
+<section id="avantages" class="section alt">
+  <div class="container adv">
+    <div class="adv-img reveal">
+      <img src="images/hospital.jpg" alt="Centre Hospitalier Universitaire Renaissance équipé en RD Congo" loading="lazy">
+      <div class="adv-badge">
+        <b>RDC</b>
+        <span>Au service des grands<br>centres hospitaliers</span>
+      </div>
+    </div>
+    <div>
+      <span class="kicker">Pourquoi Choisir kassMedical+</span>
+      <h2 class="left">La solution qui s'adapte à vos contraintes, pas l'inverse</h2>
+      <div class="adv-list">
+        <div>
+          <span class="f-ico sm"><svg class="i"><use href="#i-wifi-off"/></svg></span>
+          <div>
+            <h4>Mode Hors-Ligne Natif</h4>
+            <p>Travaillez sans interruption, même lors des pannes de courant ou coupures de fibre.</p>
+          </div>
+        </div>
+        <div>
+          <span class="f-ico sm"><svg class="i"><use href="#i-coins"/></svg></span>
+          <div>
+            <h4>Multi-Devises FC & USD</h4>
+            <p>Encaissez en Francs Congolais ou en Dollars américains avec taux paramétrables.</p>
+          </div>
+        </div>
+        <div>
+          <span class="f-ico sm"><svg class="i"><use href="#i-shield"/></svg></span>
+          <div>
+            <h4>Journal d'Audit Complet</h4>
+            <p>Traçabilité complète des dossiers, modifications et flux de caisse anti-fraude.</p>
+          </div>
+        </div>
+        <div>
+          <span class="f-ico sm"><svg class="i"><use href="#i-plug"/></svg></span>
+          <div>
+            <h4>Import Excel en 1 Clic</h4>
+            <p>Transférez facilement votre liste de tarifs, services et personnel sans tout retaper.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DÉPLOIEMENT ACCOMPAGNÉ -->
+<section id="methode" class="section">
+  <div class="container">
+    <div class="head">
+      <span class="kicker">Méthodologie</span>
+      <h2>Un déploiement rapide et sans stress</h2>
+      <p>Nos spécialistes installent le logiciel sur votre réseau local, configurent vos postes et forment vos équipes.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <span class="f-ico"><svg class="i"><use href="#i-search"/></svg></span>
+        <h3>Audit & Paramétrage</h3>
+        <p>Configuration de votre clinique : salles, lits, tarifs, services et comptes utilisateurs.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <span class="f-ico"><svg class="i"><use href="#i-gear"/></svg></span>
+        <h3>Installation Réseau</h3>
+        <p>Mise en place sur vos ordinateurs en local et configuration de la copie en ligne sécurisée.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <span class="f-ico"><svg class="i"><use href="#i-grad"/></svg></span>
+        <h3>Formation Métier</h3>
+        <p>Prise en main guidée pour les médecins, infirmiers, caissiers et la direction.</p>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <span class="f-ico"><svg class="i"><use href="#i-rocket"/></svg></span>
+        <h3>Démarrage & Suivi</h3>
+        <p>Assistance au lancement, support technique réactif et mises à jour régulières.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGE -->
+<section class="section testi-sec">
+  <div class="container">
+    <div class="testi reveal">
+      <img src="images/temoignage.jpg" alt="Directeur de clinique médicale" loading="lazy">
+      <div>
+        <svg class="quote-mark" viewBox="0 0 24 24"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H5.41A1.76 1.76 0 0 1 7.17 9.4zm10 0A5.17 5.17 0 0 0 12 11.17V18h6.83v-6.83h-3.42A1.76 1.76 0 0 1 17.17 9.4z"/></svg>
+        <blockquote>« Ce qui a fait toute la différence pour nous, c'est que kassMedical+ ne s'arrête jamais quand Internet coupe. La caisse continue d'encaisser, les médecins consultent et dès que la connexion revient, tout est sauvegardé automatiquement. La gestion des devises en FC et Dollars nous a également évité de nombreuses erreurs de caisse. »</blockquote>
+        <p class="who"><b>Directeur Médical</b><span>Clinique Partenaire · Kinshasa</span></p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRES & TARIFS -->
+<section id="tarifs" class="section alt">
+  <div class="container">
+    <div class="head">
+      <span class="kicker">Formules</span>
+      <h2>Des offres dimensionnées selon votre établissement</h2>
+      <p>Tarification transparente sur devis, incluant installation, formation du personnel et assistance technique.</p>
+    </div>
+    <div class="pricing">
+      <div class="price">
+        <h3>Cabinet & Petite Clinique</h3>
+        <p class="p-sub">Idéal jusqu'à 20 lits</p>
+        <p class="amount">Sur devis</p>
+        <ul class="checklist">
+          <li><svg class="i"><use href="#i-check"/></svg>Dossier patient & consultations</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Caisse & facturation bi-monétaire</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Fonctionnement 100% hors-ligne</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Formation initiale du personnel</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Demander une offre</a>
+      </div>
+
+      <div class="price featured">
+        <span class="tag">Formule Recommandée</span>
+        <h3>Clinique & Hôpital</h3>
+        <p class="p-sub">De 20 à 150+ lits</p>
+        <p class="amount">Sur devis</p>
+        <ul class="checklist">
+          <li><svg class="i"><use href="#i-check"/></svg>Tous les modules cliniques & CIM-10</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Laboratoire, Pharmacie & Hospitalisation</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Journal d'audit & Statistiques Direction</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Copie en ligne & synchronisation cloud</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Support prioritaire & assistance sur site</li>
+        </ul>
+        <a href="#contact" class="btn btn-white">Demander une démonstration</a>
+      </div>
+
+      <div class="price">
+        <h3>Groupe & Réseau de Santé</h3>
+        <p class="p-sub">Multi-centres & Polycliniques</p>
+        <p class="amount">Sur devis</p>
+        <ul class="checklist">
+          <li><svg class="i"><use href="#i-check"/></svg>Déploiement multi-établissements</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Consolidation des données de gestion</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Intégrations sur-mesure & API</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Accompagnement et suivi dédié</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Contacter notre équipe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container faq-wrap">
+    <div>
+      <span class="kicker">FAQ</span>
+      <h2 class="left">Questions fréquentes</h2>
+      <p>Vous souhaitez en savoir plus sur l'installation ou la compatibilité avec votre matériel existant ?</p>
+      <a href="#contact" class="btn btn-outline">Poser une question</a>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Que se passe-t-il exactement si la connexion Internet est coupée ?</summary>
+        <p>Rien ne s'arrête ! kassMedical+ fonctionne localement sur votre réseau d'établissement. Les soignants continuent d'enregistrer leurs dossiers, le laboratoire saisit les examens et la caisse émet les reçus. Dès qu'Internet est rétabli, la copie vers le serveur cloud s'effectue en arrière-plan sans bloquer l'activité.</p>
+      </details>
+      <details>
+        <summary>Comment fonctionne la caisse multi-devises (Francs Congolais et Dollars) ?</summary>
+        <p>Le système vous permet de définir vos tarifs dans la monnaie de votre choix et d'encaisser indifféremment en Francs Congolais (FC/CDF) ou en Dollars ($ USD) selon le taux configuré. La clôture de caisse du jour ventile les montants par devise pour un contrôle parfait.</p>
+      </details>
+      <details>
+        <summary>Peut-on importer nos tarifs et listes de médicaments existants ?</summary>
+        <p>Oui. kassMedical+ intègre une fonction d'importation Excel simple et rapide pour charger l'intégralité de votre catalogue d'actes, vos tarifs conventionnés et votre inventaire pharmacie.</p>
+      </details>
+      <details>
+        <summary>Combien de temps faut-il pour déployer kassMedical+ dans notre clinique ?</summary>
+        <p>Pour une clinique de taille moyenne, le logiciel peut être installé et opérationnel en quelques jours. Nos équipes assurent la formation directe de votre personnel soignant et administratif.</p>
+      </details>
+      <details>
+        <summary>Qu'est-ce que le Journal d'Audit et en quoi est-il sécurisé ?</summary>
+        <p>Le journal d'audit enregistre automatiquement chaque opération (création de facture, modification de dossier, prescription, annulation de reçu). Seule la direction y a accès, garantissant une transparence totale et évitant les détournements ou fraudes de caisse.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & DEMANDE DE DÉMO -->
+<section id="contact" class="section contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="kicker light">Démo Gratuite</span>
+      <h2 class="left">Équipez votre clinique avec kassMedical+</h2>
+      <p>Discutez directement avec nos conseillers techniques ou réservez une démonstration complète en ligne ou sur site dans votre établissement.</p>
+      <ul>
+        <li>
+          <span><svg class="i"><use href="#i-tel"/></svg></span>
+          <div>
+            <small>Téléphone & WhatsApp direct</small>
+            <b>+243 852 177 034</b>
+          </div>
+        </li>
+        <li>
+          <span><svg class="i"><use href="#i-mail"/></svg></span>
+          <div>
+            <small>Courrier électronique</small>
+            <b>contact@kassmedical.com</b>
+          </div>
+        </li>
+        <li>
+          <span><svg class="i"><use href="#i-pin"/></svg></span>
+          <div>
+            <small>Adresse de référence</small>
+            <b>Limete Boulevard 13e Rue, Kinshasa, RD Congo</b>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <form id="form" class="form">
+      <h3>Demander une démonstration</h3>
+      <p style="font-size: 0.9rem; color: var(--txt); margin-bottom: 8px;">Remplissez ce formulaire pour recevoir un devis personnalisé ou une démonstration gratuite.</p>
+      
+      <div class="row2">
+        <label>Votre nom complet *
+          <input type="text" required placeholder="Dr Kalambayi Tshiamala">
+        </label>
+        <label>Votre fonction
+          <input type="text" placeholder="Directeur, Médecin-Chef, Administrateur…">
+        </label>
+      </div>
+
+      <label>Nom de votre établissement médical *
+        <input type="text" required placeholder="Ex : Clinique Tshiamala">
+      </label>
+
+      <div class="row2">
+        <label>Numéro de téléphone (avec indicatif) *
+          <input type="tel" required placeholder="+243 …">
+        </label>
+        <label>Adresse e-mail professionnelle
+          <input type="email" placeholder="directeur@clinique.com">
+        </label>
+      </div>
+
+      <div class="row2">
+        <label>Capacité d'accueil
+          <select>
+            <option>Cabinet / Moins de 10 lits</option>
+            <option>10 à 50 lits</option>
+            <option>50 à 150 lits</option>
+            <option>Grand centre hospitalier / Réseau</option>
+          </select>
+        </label>
+        <label>Ville & Pays
+          <input type="text" placeholder="Kinshasa, RD Congo">
+        </label>
+      </div>
+
+      <label>Vos besoins spécifiques
+        <textarea rows="3" placeholder="Parlez-nous de vos besoins : gestion de caisse, laboratoire, dossier patient, besoin de matériel…"></textarea>
+      </label>
+
+      <button class="btn btn-primary full" type="submit">
+        Envoyer ma demande de démonstration <svg class="i"><use href="#i-arrow"/></svg>
+      </button>
+      <p id="ok" class="ok" hidden><svg class="i"><use href="#i-check"/></svg> Merci ! Votre demande a été enregistrée. Notre équipe vous contactera très rapidement.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- PIED DE PAGE -->
+<footer class="footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a href="#accueil" class="logo light">
+        <img src="images/logo-complet-light.png" alt="kassMedical+ - Gestion Hospitalière" class="logo-full" height="46">
+      </a>
+      <p>Le système de gestion hospitalière robuste, conçu pour la réalité des établissements de santé. Zéro interruption, caisse multi-devises et dossiers patients centralisés.</p>
+    </div>
+    <div>
+      <h4>Modules Clés</h4>
+      <a href="#logiciel">Dossier Patient & CIM-10</a>
+      <a href="#logiciel">Laboratoire d'analyses</a>
+      <a href="#logiciel">Carte des Lits & Sorties</a>
+      <a href="#hors-ligne">Caisse & Mode Hors-Ligne</a>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#modules">Espaces métiers</a>
+      <a href="#avantages">Avantages clés</a>
+      <a href="#tarifs">Offres & Devis</a>
+      <a href="#faq">Questions fréquentes</a>
+    </div>
+    <div>
+      <h4>Contact & Assistance</h4>
+      <p><b>Téléphone :</b> +243 852 177 034</p>
+      <p><b>E-mail :</b> contact@kassmedical.com</p>
+      <p><b>Adresse :</b> Limete Boulevard 13e Rue, Kinshasa, RDC</p>
+      <p style="margin-top: 14px; font-size: 0.85rem; color: var(--p2);">✔ Support technique sur site et à distance</p>
+    </div>
+  </div>
+  <div class="container foot-bottom">
+    <p>© 2026 kassMedical+. Tous droits réservés.</p>
+    <div>
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité des données médicales</a>
+    </div>
+  </div>
+</footer>
+
+<a href="#accueil" class="to-top" id="toTop" aria-label="Retour en haut"><svg class="i"><use href="#i-arrow"/></svg></a>
+
+<script src="script.js"></script>
+</body>
+</html>
