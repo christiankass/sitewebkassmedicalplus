@@ -42,11 +42,12 @@ ul{list-style:none}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-full{height:46px;width:auto;max-width:240px;object-fit:contain;display:block}
 .menu{display:flex;gap:28px;font-weight:600;font-size:.92rem;color:var(--title)}
-.menu a{position:relative;padding:6px 0}
+.menu a{position:relative;padding:6px 0;white-space:nowrap}
 .menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--p2);transition:.25s}
 .menu a:hover,.menu a.active{color:var(--p)}
 .menu a:hover::after,.menu a.active::after{width:100%}
-.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.menu .menu-connexion{display:none}
 .burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
 .burger span{width:20px;height:2px;background:var(--title);border-radius:2px;transition:.3s}
 .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -299,6 +300,14 @@ details p{padding:0 26px 24px;font-size:.95rem;line-height:1.6}
 .reveal.show{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
+/* Menu replié derrière le bouton burger tant qu'il ne tient pas sur une ligne */
+@media (max-width:1280px){
+  .burger{display:flex}
+  .menu{position:absolute;top:78px;left:0;right:0;flex-direction:column;gap:0;background:#fff;padding:10px 4%;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.2);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.3s}
+  .menu.open{transform:none;opacity:1;pointer-events:auto}
+  .menu a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .menu a::after{display:none}
+}
 @media (max-width:1100px){
   .features{grid-template-columns:repeat(2,1fr)}
   .menu{gap:20px}
@@ -306,11 +315,6 @@ details p{padding:0 26px 24px;font-size:.95rem;line-height:1.6}
 }
 @media (max-width:960px){
   .topbar-left span:last-child,.topbar-right{display:none}
-  .burger{display:flex}
-  .menu{position:absolute;top:78px;left:0;right:0;flex-direction:column;gap:0;background:#fff;padding:10px 4%;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.2);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.3s}
-  .menu.open{transform:none;opacity:1;pointer-events:auto}
-  .menu a{padding:14px 0;border-bottom:1px solid var(--line)}
-  .menu a::after{display:none}
   .hero-grid,.panel,.zig,.adv,.faq-wrap,.contact-grid{grid-template-columns:1fr;gap:50px}
   .zig.rev .zig-img{order:0}
   .hero{padding:50px 0 90px}
@@ -327,6 +331,7 @@ details p{padding:0 26px 24px;font-size:.95rem;line-height:1.6}
 @media (max-width:620px){
   .section{padding:80px 0}
   .nav-cta .btn{display:none}
+  .menu .menu-connexion{display:block;color:var(--p)}
   .features,.steps,.adv-list,.row2{grid-template-columns:1fr}
   .float-card{padding:10px 14px;font-size:.8rem}
   .fc1{top:12px;left:8px}.fc2{display:none}.fc3{right:8px}

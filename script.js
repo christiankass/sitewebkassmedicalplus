@@ -23,7 +23,7 @@ menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 }));
 
 // Lien actif selon la section visible
-const links = [...menu.querySelectorAll('a')];
+const links = [...menu.querySelectorAll('a[href^="#"]')];
 const spy = new IntersectionObserver(entries => entries.forEach(e => {
   if (e.isIntersecting) {
     links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
