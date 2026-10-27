@@ -7,7 +7,7 @@
   --r:18px; --shadow:0 20px 50px -20px rgba(11,42,79,.25);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--txt);line-height:1.65;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
@@ -343,5 +343,45 @@ details p{padding:0 26px 24px;font-size:.95rem;line-height:1.6}
   .win-header{padding:10px 14px}
   .win-title{font-size:.76rem}
   .win-badge{display:none}
+}
+/* Téléphone : textes à la taille habituelle des sites mobiles, moins de vide */
+@media (max-width:620px){
+  body{line-height:1.55}
+  .topbar{font-size:.76rem}
+  .topbar-in{height:36px}
+  .topbar-left{gap:14px;white-space:nowrap}
+  .hero{padding:28px 0 56px}
+  .eyebrow{font-size:.74rem;padding:6px 12px}
+  h1{font-size:1.85rem;line-height:1.15;letter-spacing:-.03em;margin:16px 0 14px}
+  .lead{font-size:1rem;margin-bottom:24px}
+  .hero-text .btn{width:100%}
+  .btn{padding:13px 20px;font-size:.94rem}
+  .hero-proof{margin-top:26px;font-size:.86rem}
+  .section{padding:56px 0}
+  .head{margin-bottom:34px}
+  .kicker{font-size:.72rem;margin-bottom:10px}
+  h2{font-size:1.5rem;line-height:1.2;margin-bottom:12px}
+  .head p,.zig-txt p,.panel-txt>p,.contact-info>p{font-size:.97rem}
+  .hero-grid,.panel,.zig,.adv,.faq-wrap,.contact-grid{gap:32px}
+  .panel-txt h3{font-size:1.3rem}
+  .mini-stats{gap:12px;margin-top:20px}
+  .mini-stats div{padding:14px}
+  .mini-stats b{font-size:1.3rem;line-height:1.25}
+  .mini-stats small{display:block;font-size:.8rem;line-height:1.4}
+  .stats{margin-top:40px;gap:28px 16px}
+  .stats b{font-size:1.9rem}
+  .stats p{font-size:.84rem}
+  .feature{padding:22px 20px}
+  .testi{padding:28px 22px}
+  .testi blockquote{font-size:1.02rem}
+  .price{padding:28px 22px}
+  .amount{font-size:1.6rem;margin:16px 0;padding-bottom:16px}
+  summary{padding:16px 18px;font-size:.95rem}
+  details p{padding:0 18px 18px;font-size:.92rem}
+  .form h3{font-size:1.2rem}
+  .footer{padding-top:48px;font-size:.88rem}
+  .foot-grid{gap:30px;padding-bottom:36px}
+  .foot-bottom{font-size:.8rem;flex-direction:column}
+  .foot-bottom div{flex-direction:column;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
